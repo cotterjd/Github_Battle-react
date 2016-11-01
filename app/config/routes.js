@@ -9,6 +9,7 @@ const
 , Main = require('../components/Main')
 , Home = require('../components/Home')
 , PromptContainer = require ('../containers/PromptContainer')
+, ConfirmBattleContainer = require ('../containers/ConfirmBattleContainer')
 
 , routes = (
     <Router history={hashHistory}>
@@ -16,6 +17,7 @@ const
 	<IndexRoute component={Home} />
 	<Route path='playerOne' header='Player One' component={PromptContainer} />
 	<Route path='playerTwo/:playerOne' header='Player Two' component={PromptContainer} />
+	<Route path='battle' component={ConfirmBattleContainer} />
       </Route>
     </Router>
   )
