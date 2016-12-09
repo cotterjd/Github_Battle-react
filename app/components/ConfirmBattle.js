@@ -4,6 +4,7 @@ const
 , styles = require('../styles')
 , Link = require('react-router').Link
 , UserDetails = require('./UserDetails')
+, UserDetailsWrapper = require('./UserDetailsWrapper')
 , puke = function (obj) {
 		return <pre>{JSON.stringify(obj, null, ' ')}</pre>
 	}
@@ -13,14 +14,12 @@ const
 			: <div className="jumbotron col-sm-12 text-center" style={styles.transparentBg}>
 					<h1>Confirm Players</h1>
 					<div className='col-sm-8 col-sm-offset-2'>
-						<div className='col-sm-6'>
-							<p className='lead'>Player 1</p>
+						<UserDetailsWrapper header="Player 1">
 							<UserDetails info={props.playersInfo[0]} />
-						</div>
-						<div className='col-sm-6'>
-							<p className='lead'>Player 2</p>
+						</UserDetailsWrapper>
+						<UserDetailsWrapper header="Player 2">
 							<UserDetails info={props.playersInfo[1]} />
-						</div>
+						</UserDetailsWrapper>
 					</div>
 					<div className='col-sm-8 col-sm-offset-2'>
 						<div className='col-sm-12' style={styles.space}>
