@@ -3,7 +3,7 @@ const
 , PropTypes = React.PropTypes
 , styles = require('../styles')
 , Link = require('react-router').Link
-, UserDetails = require('./UserDetails')
+, UserDetails = require('./UserDetail')
 , puke = function (obj) {
 		return <pre>{JSON.stringify(obj, null, ' ')}</pre>
 	}
