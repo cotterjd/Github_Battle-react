@@ -1,63 +1,63 @@
 const React = require('react')
-,   	PropTypes = React.PropTypes
-,     styles = {
-				container: {
-					position: 'fixed',
-					left: 0,
-					right: 0,
-					top: 0,
-					bottom: 0,
-					frontSize: '55px'
-				},
-				content: {
-					textAlign: 'center',
-					position: 'absolute',
-					width: '100%',
-					marginTop: '30px'
-				}
+,   PropTypes = React.PropTypes
+,   styles = {
+	container: {
+		position: 'fixed',
+		left: 0,
+		right: 0,
+		top: 0,
+		bottom: 0,
+		frontSize: '55px'
+	},
+	content: {
+		textAlign: 'center',
+		position: 'absolute',
+		width: '100%',
+		marginTop: '30px'
+	}
+    }
+,   Loading = React.createClass({
+	propTypes: {
+		text: PropTypes.string,
+		speed: PropTypes.number
+	},
+	getDefaultProps: function () {
+		return {
+			text: 'Loading',
+			speed: 300
+		}
+	},
+	getInitialState: function () {
+		this.originalText = this.props.text;
+		return {
+			text: this.originalText
+		}
+	},
+	componentDidMount: function () {
+		const stopper = this.originalText + '...';
+		this.interval = setInterval(function () {
+			if(this.state.text === stopper) {
+				this.setState({
+					text: this.originalText
+				})
+			} else {
+				this.setState({
+					text: this.state.text + '.'
+				})
 			}
-,     Loading = React.createClass({
-				propTypes: {
-					text: PropTypes.string,
-					speed: PropTypes.number
-				},
-				getDefaultProps: function () {
-					return {
-						text: 'Loading',
-						speed: 300
-					}
-				},
-				getInitialState: function () {
-					this.originalText = this.props.text;
-					return {
-						text: this.originalText
-					}
-				},
-				componentDidMount: function () {
-					const stopper = this.originalText + '...';
-					this.interval = setInterval(function () {
-						if(this.state.text === stopper) {
-							this.setState({
-								text: this.originalText
-							})
-						} else {
-							this.setState({
-								text: this.state.text + '.'
-							})
-						}
-					}.bind(this), this.props.speed)
-				},
-				componentWillUnmount: function () {
-					clearInterval(this.interval);
-				},
-				render: function() {
-					return (
-						<div style={styles.container}>
-							<p style={styles.content}> {this.state.text}</p>
-						</div>
-					);
-				}
-			})
+		}.bind(this), this.props.speed)
+	},
+	componentWillUnmount: function () {
+		clearInterval(this.interval);
+	},
+	render: function() {
+		return (
+			<div style={styles.container}>
+				<p style={styles.content}> {this.state.text}</p>
+			</div>
+			);
+		}
+    })
 ;
 
 module.exports = Loading;
