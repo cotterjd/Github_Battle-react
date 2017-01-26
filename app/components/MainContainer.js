@@ -1,5 +1,5 @@
 const
-	React = require('react')
+  React = require('react')
 , styles = require('../styles')
 
 , MainContainer = function(props) {
@@ -9,6 +9,6 @@ const
 			</div>
 		)
   }
-, nil = null;
+;
 
 module.exports = MainContainer;
